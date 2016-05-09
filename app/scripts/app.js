@@ -66,6 +66,16 @@ angular.module('confusionApp', ['ui.router','ngResource','ngDialog'])
                    }
                 }
             })
+            // route for the dishdetail page
+            .state('app.searchresults', {
+                url: 'searchresults',
+                views: {
+                    'content@': {
+                        templateUrl : 'views/searchresults.html',
+                        controller  : 'SearchResultsController'
+                   }
+                }
+            })        
         
             // route for the dishdetail page
             .state('app.favorites', {
