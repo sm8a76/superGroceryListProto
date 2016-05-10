@@ -26,7 +26,7 @@
                     <div class="media-body">
                         <h2 class="media-heading">{{result.name}}
                         <span class="label label-danger label-xs">{{result.label}}</span>
-                        <span class="badge">{{result.price/100 | currency}}</span></h2>
+                        <span class="badge">{{result.price/100 | currency}} at {{result.bestPriceAt}}</span></h2>
                         <p ng-show="showDetails">Unit: {{result.unit}}</p>
                         <p ng-show="showDetails">Available: {{result.available}}</p>
                          <button  ng-click="addToList(result._id)" class="btn btn-sm btn-success"

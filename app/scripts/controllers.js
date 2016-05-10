@@ -154,8 +154,9 @@ angular.module('confusionApp')
           description: 'Leche Entera Santa Clara',
           category: 'Lacteos', 
           price: 1500, 
+          bestPriceAt: 'HEB',
           unit: 'Litros', 
-          available: 'Yes',
+          available: 'HEB, Soriana, WalMart',
           label: '-5%',
           image: 'image/leche-entera-santaclara.jpg'         
         },
@@ -164,8 +165,9 @@ angular.module('confusionApp')
           description: 'Leche Entera Lala',
           category: 'Lacteos', 
           price: 1350, 
+          bestPriceAt: 'HEB',
           unit: 'Litros', 
-          available: 'Yes',
+          available: 'HEB, Soriana, WalMart',
           label: '',
           image: 'image/leche-entera-lala.jpg'         
         },  
@@ -174,8 +176,9 @@ angular.module('confusionApp')
           description: 'Leche Deslactosada Santa Clara',
           category: 'Lacteos', 
           price: 1800, 
+          bestPriceAt: 'WalMart',
           unit: 'Litros', 
-          available: 'Yes',
+          available: 'HEB, WalMart',
           label: '-5%',
           image: 'image/leche-deslactosada-santaclara.jpg'         
         },
@@ -184,8 +187,9 @@ angular.module('confusionApp')
           description: 'Leche Deslactosada Parmalat',
           category: 'Lacteos', 
           price: 1650, 
+          bestPriceAt: 'WalMart',
           unit: 'Litros', 
-          available: 'Yes',
+          available: 'HEB, Soriana, WalMart, SMart',
           label: '',
           image: 'image/leche-deslactosada-parmalat.jpg'         
         }
@@ -198,6 +202,82 @@ angular.module('confusionApp')
     
     console.log('Entering SearchResultsController...');    
 }])
+
+.controller('MyListsController', ['$scope', '$state', function ($scope, $state){
+    $scope.showDetails = true;
+    
+    $scope.superMarkets = [
+        { name: 'HEB'},
+        { name: 'Soriana'},
+        { name: 'WalMart'},
+        { name: 'SMart'}
+    ];
+    
+    $scope.currentList = {};
+    $scope.currentSuperMarket = {};
+    
+    $scope.myLists = [ 
+        { _id: 0,
+          name: 'WeeklyList',
+          theList:         [
+                { _id: 0,
+                  name: 'Leche Entera Santa Clara', 
+                  category: 'Lacteos', 
+                  price: 1500, 
+                  bestPriceAt: 'HEB',
+                  quantity: 4,
+                  unit: 'Litros', 
+                  available: 'HEB, Soriana, WalMart',
+                  label: '-5%',
+                  image: 'image/leche-entera-santaclara.jpg'         
+                },
+                { _id: 1,
+                  name: 'Azucar Mascabado BlackSugar', 
+                  description: 'Azucar Mascabado BlackSugar',
+                  category: 'Azucar', 
+                  price: 2450, 
+                  bestPriceAt: 'WalMart',
+                  quantity: 1,
+                  unit: 'Kilos', 
+                  available: 'HEB, Soriana, WalMart',
+                  label: '',
+                  image: 'image/azucar-mascabado.jpg'         
+                },  
+                { _id: 2,
+                  name: 'Tomates', 
+                  description: 'Tomates',
+                  category: 'Frutas y Verduras', 
+                  price: 0950, 
+                  bestPriceAt: 'WalMart',
+                  quantity: 1,
+                  unit: 'Kilos', 
+                  available: 'HEB, Soriana, WalMart',
+                  label: '-5%',
+                  image: 'image/tomates.jpg'         
+                },
+                { _id: 3,
+                  name: 'Limones', 
+                  description: 'Limones',
+                  category: 'Frutas y Verduras', 
+                  price: 2850, 
+                  bestPriceAt: 'Soriana',
+                  quantity: 1,
+                  unit: 'Kilos', 
+                  available: 'HEB, Soriana, WalMart, SMart',
+                  label: '',
+                  image: 'image/limones.jpg'         
+                }
+    ]
+    }];
+        
+    
+    $scope.addToList = function(id){
+        console.log('Adding item ' + id);  
+    };
+    
+    console.log('Entering MyListsController...');    
+}])
+
 
 .controller('AboutController', ['$scope', 'corporateFactory', function ($scope, corporateFactory) {
 
