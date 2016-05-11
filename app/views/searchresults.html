@@ -19,7 +19,7 @@
                 <li class="media" ng-repeat="result in results | filter:filtText">
                     <div class="media-left media-middle">
                         <a ui-sref="app.dishdetails({id: result._id})">
-                        <img class="media-object img-thumbnail"
+                        <img class="media-object img-thumbnail" height="120" width="100"
                         ng-src={{result.image}} alt="Image Not Found">
                         </a>
                     </div>

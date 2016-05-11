@@ -158,7 +158,7 @@ angular.module('confusionApp')
           unit: 'Litros', 
           available: 'HEB, Soriana, WalMart',
           label: '-5%',
-          image: 'image/leche-entera-santaclara.jpg'         
+          image: 'images/leche-entera-santaclara.png'         
         },
         { _id: 1,
           name: 'Leche Entera Lala', 
@@ -169,7 +169,7 @@ angular.module('confusionApp')
           unit: 'Litros', 
           available: 'HEB, Soriana, WalMart',
           label: '',
-          image: 'image/leche-entera-lala.jpg'         
+          image: 'images/leche-entera-lala.jpeg'         
         },  
         { _id: 2,
           name: 'Leche Deslactosada Santa Clara', 
@@ -180,7 +180,7 @@ angular.module('confusionApp')
           unit: 'Litros', 
           available: 'HEB, WalMart',
           label: '-5%',
-          image: 'image/leche-deslactosada-santaclara.jpg'         
+          image: 'images/leche-deslactosada-santaclara.jpg'         
         },
         { _id: 3,
           name: 'Leche Deslactosada Parmalat', 
@@ -191,7 +191,7 @@ angular.module('confusionApp')
           unit: 'Litros', 
           available: 'HEB, Soriana, WalMart, SMart',
           label: '',
-          image: 'image/leche-deslactosada-parmalat.jpg'         
+          image: 'images/leche-deslactosada-parmalat.jpg'         
         }
         
     ];
