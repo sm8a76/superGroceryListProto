@@ -6,7 +6,7 @@
   margin: 0px auto;
   padding: 50px 0px;
   border-bottom: 1px ridge;
-  min-height: 400px;
+  min-height: 100px;
 }
 .row-footer {
   margin: 0px auto;
@@ -15,7 +15,7 @@
 }
 .jumbotron {
   margin: 0px auto;
-  padding: 70px 30px;
+  padding: 10px 10px;
   background: green;
   color: floralwhite;
 }

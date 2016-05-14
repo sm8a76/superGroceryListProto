@@ -1,0 +1,52 @@
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a href="index.html">Home</a></li>
+                   <li class="active">My Groceries Lists</li>
+               </ul>
+            </div>
+            <div class="col-xs-12">
+               <h3>My Groceries Lists</h3>
+               <hr>
+            </div>
+        </div>
+        
+        <div class="row row-content">
+                <div class='col-xs-12 col-sm-4'>
+                    <select class="form-control"
+                       ng-model="currentList"
+                       ng-options="list._id as list.name for list in myLists">
+                        <option value="">None</option>
+                    </select>  
+                    <span class="help-block">Select a grocery list.</span>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12 col-sm-4">
+                        <button type="button" class="btn btn-success">Compare prices</button>
+                    </div>
+                </div>                   
+            
+        </div>
+        
+        <div class="row row-content">
+                <div class='col-xs-12 col-sm-4'>
+                    <select class="form-control"
+                       ng-model="currentSuperMarket"
+                       ng-options="supermarket.name as supermarket.name for supermarket in superMarkets">
+                        <option value="">None</option>
+                    </select>  
+                    <span class="help-block">Select a supermarket.</span>
+                </div>  
+                <div class="form-group">
+                    <div class="col-xs-12 col-sm-4">
+                        <button type="button" class="btn btn-success">See total cost</button>
+                    </div>
+                </div>              
+            
+        </div>
+        
+        
+
+     </div>
