@@ -78,7 +78,7 @@ angular.module('confusionApp')
     $scope.sendFeedback = function () {
 
 
-        if ($scope.feedback.agree && ($scope.feedback.mychannel == "")) {
+        if ($scope.feedback.agree && ($scope.feedback.mychannel === "")) {
             $scope.invalidChannelSelection = true;
         } else {
             $scope.invalidChannelSelection = false;
@@ -132,7 +132,7 @@ angular.module('confusionApp')
             rating: 5,
             comment: ""
         };
-    }
+    };
 }])
 
 // implement the IndexController and About Controller here
@@ -141,11 +141,11 @@ angular.module('confusionApp')
     
     $scope.search = function(){
         $state.go('app.searchresults', {}, {reload: true});
-    }
+    };
     
 }])
 
-.controller('SearchResultsController', ['$scope', '$state', function ($scope, $state){
+.controller('SearchResultsController', ['$scope', function ($scope){
     $scope.showDetails = true;
     
     $scope.results = [
@@ -298,8 +298,9 @@ angular.module('confusionApp')
     $scope.loginData = $localStorage.getObject('userinfo','{}');
     
     $scope.doLogin = function() {
-        if($scope.rememberMe)
+        if($scope.rememberMe){
            $localStorage.storeObject('userinfo',$scope.loginData);
+        }
 
         AuthFactory.login($scope.loginData);
 
