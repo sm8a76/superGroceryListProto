@@ -9,7 +9,7 @@ angular.module('confusionApp')
     $scope.showDetails = false;
     $scope.showFavorites = false;
     $scope.showMenu = false;
-    $scope.message = "Loading ...";
+    $scope.message = 'Loading ...';
 
     menuFactory.query(
         function (response) {
@@ -18,20 +18,20 @@ angular.module('confusionApp')
 
         },
         function (response) {
-            $scope.message = "Error: " + response.status + " " + response.statusText;
+            $scope.message = 'Error: ' + response.status + ' ' + response.statusText;
         });
 
     $scope.select = function (setTab) {
         $scope.tab = setTab;
 
         if (setTab === 2) {
-            $scope.filtText = "appetizer";
+            $scope.filtText = 'appetizer';
         } else if (setTab === 3) {
-            $scope.filtText = "mains";
+            $scope.filtText = 'mains';
         } else if (setTab === 4) {
-            $scope.filtText = "dessert";
+            $scope.filtText = 'dessert';
         } else {
-            $scope.filtText = "";
+            $scope.filtText = '';
         }
     };
 
@@ -57,19 +57,19 @@ angular.module('confusionApp')
 .controller('ContactController', ['$scope', 'feedbackFactory', function ($scope, feedbackFactory) {
 
     $scope.feedback = {
-        mychannel: "",
-        firstName: "",
-        lastName: "",
+        mychannel: '',
+        firstName: '',
+        lastName: '',
         agree: false,
-        email: ""
+        email: ''
     };
 
     var channels = [{
-        value: "tel",
-        label: "Tel."
+        value: 'tel',
+        label: 'Tel.'
     }, {
-        value: "Email",
-        label: "Email"
+        value: 'Email',
+        label: 'Email'
     }];
 
     $scope.channels = channels;
@@ -78,19 +78,19 @@ angular.module('confusionApp')
     $scope.sendFeedback = function () {
 
 
-        if ($scope.feedback.agree && ($scope.feedback.mychannel === "")) {
+        if ($scope.feedback.agree && ($scope.feedback.mychannel === '')) {
             $scope.invalidChannelSelection = true;
         } else {
             $scope.invalidChannelSelection = false;
             feedbackFactory.save($scope.feedback);
             $scope.feedback = {
-                mychannel: "",
-                firstName: "",
-                lastName: "",
+                mychannel: '',
+                firstName: '',
+                lastName: '',
                 agree: false,
-                email: ""
+                email: ''
             };
-            $scope.feedback.mychannel = "";
+            $scope.feedback.mychannel = '';
             $scope.feedbackForm.$setPristine();
         }
     };
@@ -100,7 +100,7 @@ angular.module('confusionApp')
 
     $scope.dish = {};
     $scope.showDish = false;
-    $scope.message = "Loading ...";
+    $scope.message = 'Loading ...';
 
     $scope.dish = menuFactory.get({
             id: $stateParams.id
@@ -111,13 +111,13 @@ angular.module('confusionApp')
                 $scope.showDish = true;
             },
             function (response) {
-                $scope.message = "Error: " + response.status + " " + response.statusText;
+                $scope.message = 'Error: ' + response.status + ' ' + response.statusText;
             }
         );
 
     $scope.mycomment = {
         rating: 5,
-        comment: ""
+        comment: ''
     };
 
     $scope.submitComment = function () {
@@ -130,7 +130,7 @@ angular.module('confusionApp')
 
         $scope.mycomment = {
             rating: 5,
-            comment: ""
+            comment: ''
         };
     };
 }])
@@ -145,7 +145,7 @@ angular.module('confusionApp')
     
 }])
 
-.controller('SearchResultsController', ['$scope', function ($scope){
+.controller('SearchResultsController', ['$scope', 'ngDialog', function ($scope, ngDialog){
     $scope.showDetails = true;
     
     $scope.results = [
@@ -198,12 +198,91 @@ angular.module('confusionApp')
     
     $scope.addToList = function(id){
         console.log('Adding item ' + id);  
+        $scope.currentItem = $scope.results[id];
+        
+        ngDialog.open({ template: 'views/addToList.html', scope: $scope, className: 'ngdialog-theme-default', controller:'AddToListController' });        
     };
+
+    
+    $scope.openAddToList = function (id) {
+        console.log('Adding item... ' + id);  
+        $scope.currentItem = $scope.results[id];
+        
+        ngDialog.open({ template: 'views/addToList.html', scope: $scope, className: 'ngdialog-theme-default', controller:'AddToListController' });
+    };
+        
     
     console.log('Entering SearchResultsController...');    
 }])
 
-.controller('MyListsController', ['$scope', '$state', function ($scope, $state){
+.controller('AddToListController', ['$scope', 'ngDialog', function ($scope,ngDialog){
+   $scope.quantity = 1;
+   $scope.whichList = {};
+    
+    $scope.addToList = function() {
+        ngDialog.close();
+    };
+    
+     $scope.closeThisDialog = function() {
+        ngDialog.close();
+    };      
+    
+   $scope.myLists = [ 
+        { _id: 0,
+          name: 'WeeklyList',
+          theList:         [
+                { _id: 0,
+                  name: 'Leche Entera Santa Clara', 
+                  category: 'Lacteos', 
+                  price: 1500, 
+                  bestPriceAt: 'HEB',
+                  quantity: 4,
+                  unit: 'Litros', 
+                  available: 'HEB, Soriana, WalMart',
+                  label: '-5%',
+                  image: 'image/leche-entera-santaclara.jpg'         
+                },
+                { _id: 1,
+                  name: 'Azucar Mascabado BlackSugar', 
+                  description: 'Azucar Mascabado BlackSugar',
+                  category: 'Azucar', 
+                  price: 2450, 
+                  bestPriceAt: 'WalMart',
+                  quantity: 1,
+                  unit: 'Kilos', 
+                  available: 'HEB, Soriana, WalMart',
+                  label: '',
+                  image: 'image/azucar-mascabado.jpg'         
+                },  
+                { _id: 2,
+                  name: 'Tomates', 
+                  description: 'Tomates',
+                  category: 'Frutas y Verduras', 
+                  price: 950, 
+                  bestPriceAt: 'WalMart',
+                  quantity: 1,
+                  unit: 'Kilos', 
+                  available: 'HEB, Soriana, WalMart',
+                  label: '-5%',
+                  image: 'image/tomates.jpg'         
+                },
+                { _id: 3,
+                  name: 'Limones', 
+                  description: 'Limones',
+                  category: 'Frutas y Verduras', 
+                  price: 2850, 
+                  bestPriceAt: 'Soriana',
+                  quantity: 1,
+                  unit: 'Kilos', 
+                  available: 'HEB, Soriana, WalMart, SMart',
+                  label: '',
+                  image: 'image/limones.jpg'         
+                }
+    ]
+    }];
+}])
+
+.controller('MyListsController', ['$scope', function ($scope){
     $scope.showDetails = true;
     
     $scope.superMarkets = [
@@ -247,7 +326,7 @@ angular.module('confusionApp')
                   name: 'Tomates', 
                   description: 'Tomates',
                   category: 'Frutas y Verduras', 
-                  price: 0950, 
+                  price: 950, 
                   bestPriceAt: 'WalMart',
                   quantity: 1,
                   unit: 'Kilos', 
@@ -292,7 +371,7 @@ angular.module('confusionApp')
     $scope.showDetails = false;
     $scope.showDelete = false;
     $scope.showMenu = false;
-    $scope.message = "Loading ...";
+    $scope.message = 'Loading ...';
 
     favoriteFactory.query(
         function (response) {
@@ -300,20 +379,20 @@ angular.module('confusionApp')
             $scope.showMenu = true;
         },
         function (response) {
-            $scope.message = "Error: " + response.status + " " + response.statusText;
+            $scope.message = 'Error: ' + response.status + ' ' + response.statusText;
         });
 
     $scope.select = function (setTab) {
         $scope.tab = setTab;
 
         if (setTab === 2) {
-            $scope.filtText = "appetizer";
+            $scope.filtText = 'appetizer';
         } else if (setTab === 3) {
-            $scope.filtText = "mains";
+            $scope.filtText = 'mains';
         } else if (setTab === 4) {
-            $scope.filtText = "dessert";
+            $scope.filtText = 'dessert';
         } else {
-            $scope.filtText = "";
+            $scope.filtText = '';
         }
     };
 
@@ -348,7 +427,7 @@ angular.module('confusionApp')
     }
         
     $scope.openLogin = function () {
-        ngDialog.open({ template: 'views/login.html', scope: $scope, className: 'ngdialog-theme-default', controller:"LoginController" });
+        ngDialog.open({ template: 'views/login.html', scope: $scope, className: 'ngdialog-theme-default', controller:'LoginController' });
     };
     
     $scope.logOut = function() {
@@ -389,7 +468,7 @@ angular.module('confusionApp')
     };
             
     $scope.openRegister = function () {
-        ngDialog.open({ template: 'views/register.html', scope: $scope, className: 'ngdialog-theme-default', controller:"RegisterController" });
+        ngDialog.open({ template: 'views/register.html', scope: $scope, className: 'ngdialog-theme-default', controller:'RegisterController' });
     };
     
 }])

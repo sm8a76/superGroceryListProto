@@ -8,9 +8,9 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head 
          content must come *after* these tags -->
     
-    <title>Ristorante Con Fusion</title>    
-        <!-- Bootstrap -->
-<!-- build:css styles/main.css -->
+    <title>SuperGroceryList</title>    
+<!-- Bootstrap -->
+<!-- build:css(.tmp) styles/main.css -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -36,13 +36,14 @@
     <div ui-view="content"></div>
     
     <div ui-view="footer"></div>
+    
 
 
-<!-- build:js scripts/main.js -->
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="../bower_components/angular/angular.min.js"></script>
     <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="../bower_components/angular-resource/angular-resource.min.js"></script>
-    <script src="../bower_components/ng-dialog/js/ngDialog.min.js"></script>
+    <script src="../bower_components/ng-dialog/js/ngDialog.min.js"></script>      
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers.js"></script>
     <script src="scripts/services.js"></script>

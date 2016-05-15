@@ -1,0 +1,43 @@
+    <div class="ngdialog-message">
+        <div class="">
+            <h3>Add Item to a Grocery List</h3>
+        </div>
+        <div class="">&nbsp;</div>
+        <div class="">
+            <form ng-submit="addToList()">
+                
+                <div class="media">
+                    <div class="media-left media-middle">
+                        <a ng-click="addToList(currentItem._id)">
+                        <img class="media-object img-thumbnail" height="120" width="100"
+                        ng-src={{currentItem.image}} alt="Image Not Found">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h2 class="media-heading">{{currentItem.name}}
+                        <span class="label label-danger label-xs">{{currentItem.label}}</span>
+                        <span class="badge">{{currentItem.price/100 | currency}} at {{currentItem.bestPriceAt}}</span></h2>
+                        <p ng-show="showDetails">Unit: {{currentItem.unit}}</p>
+                        <p ng-show="showDetails">Available: {{currentItem.available}}</p>
+                        <div class="form-group">
+                            <label for="quantity">Quantity:</label>
+                            <input type="text" class="form-control input-xs" id="quantity" name="quantity" placeholder="Quantity" ng-model="quantity">
+                        </div> 
+                        <div class="form-group">
+                            <span class="help-block">Add it to:</span>
+                            <select class="form-control"
+                               ng-model="whichList"
+                               ng-options="list._id as list.name for list in myLists">
+                                <option value="">None</option>
+                            </select>  
+                            
+                        </div>                        
+                         <button  ng-click="addToList()" class="btn btn-success btn-sm"
+                    type="button" > Add to List
+                        </button>
+                        <button type="button" class="btn btn-default btn-sm" ng-click=closeThisDialog()>Cancel</button>                        
+                    </div>
+                </div>                
+            </form>
+        </div>
+    </div>
