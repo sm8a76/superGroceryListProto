@@ -240,7 +240,7 @@ angular.module('confusionApp')
                   unit: 'Litros', 
                   available: 'HEB, Soriana, WalMart',
                   label: '-5%',
-                  image: '/images/leche-entera-santaclara.jpg'         
+                  image: '/images/leche-entera-santaclara.png'         
                 },
                 { _id: 1,
                   name: 'Azucar Mascabado BlackSugar', 
@@ -308,7 +308,7 @@ angular.module('confusionApp')
                   unit: 'Litros', 
                   available: 'HEB, Soriana, WalMart',
                   label: '-5%',
-                  image: 'image/leche-entera-santaclara.jpg'         
+                  image: '/images/leche-entera-santaclara.png'         
                 },
                 { _id: 1,
                   name: 'Azucar Mascabado BlackSugar', 
@@ -320,7 +320,7 @@ angular.module('confusionApp')
                   unit: 'Kilos', 
                   available: 'HEB, Soriana, WalMart',
                   label: '',
-                  image: 'image/azucar-mascabado.jpg'         
+                  image: '/images/azucar-mascabado.jpg'         
                 },  
                 { _id: 2,
                   name: 'Tomates', 
@@ -332,7 +332,7 @@ angular.module('confusionApp')
                   unit: 'Kilos', 
                   available: 'HEB, Soriana, WalMart',
                   label: '-5%',
-                  image: 'image/tomates.jpg'         
+                  image: '/images/tomates.jpg'         
                 },
                 { _id: 3,
                   name: 'Limones', 
@@ -344,7 +344,7 @@ angular.module('confusionApp')
                   unit: 'Kilos', 
                   available: 'HEB, Soriana, WalMart, SMart',
                   label: '',
-                  image: 'image/limones.jpg'         
+                  image: '/images/limones.jpg'         
                 }
     ]
     }];
